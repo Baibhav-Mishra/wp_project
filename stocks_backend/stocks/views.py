@@ -1,15 +1,12 @@
-from django.shortcuts import render, redirect
-from .utils import fetch_and_store_stock
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import AllowAny
 from rest_framework.response import Response
 from rest_framework import status
-from pymongo import MongoClient
-from django.contrib.auth.models import User
 from django.views.decorators.csrf import csrf_exempt
-from .mongodb import db  # MongoDB connection
+from .mongodb import db  
 from django.http import JsonResponse
 import json
+
 # MongoDB: User's Stocks collection
 users_stocks = db["user_stocks"]
 @csrf_exempt
