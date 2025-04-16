@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Stock Dashboard</title>
+    <style>
+        body { font-family: Arial; }
+        table { border-collapse: collapse; width: 80%; margin: auto; }
+        th, td { padding: 12px; border: 1px solid #ccc; text-align: center; }
+    </style>
+</head>
+<body>
+    <h2 style="text-align:center;">Stock Dashboard</h2>
+    <form method="POST" style="text-align:center;">{% csrf_token %}
+        <input type="text" name="symbol" placeholder="Enter stock symbol (e.g. AAPL)">
+        <button type="submit">Add Stock</button>
+    </form>
+    <br>
+    <table>
+        <tr>
+            <th>Symbol</th><th>Name</th><th>Current Price</th><th>Previous Close</th><th>Volume</th><th>Last Updated</th>
+        </tr>
+        {% for stock in stocks %}
+        <tr>
+            <td>{{ stock.symbol }}</td>
+            <td>{{ stock.name }}</td>
+            <td>{{ stock.current_price }}</td>
+            <td>{{ stock.previous_close }}</td>
+            <td>{{ stock.volume }}</td>
+            <td>{{ stock.updated_at }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
