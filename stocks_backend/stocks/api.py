@@ -13,7 +13,6 @@ def stock_data(request, symbol):
         ticker = yf.Ticker(symbol)
         info = ticker.info
 
-        # Get last 30 days of price history
         hist = ticker.history(period="1mo")
         history = [
             {"date": date.strftime("%Y-%m-%d"), "close": round(row["Close"], 2)}
